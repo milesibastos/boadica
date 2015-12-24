@@ -1,0 +1,16 @@
+{
+  "name": "boadica",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "@milesibastos",
+  "license": "ISC",
+  "dependencies": {
+    "firebase": "^2.3.2",
+    "promise": "^7.1.1",
+    "underscore": "^1.8.3"
+  }
+}
