@@ -17,7 +17,9 @@ function crawler(url) {
   return new Promise(function (fulfill, reject){
 
     var exit = true;
-    url = "https://api.import.io/store/connector/_magic?url=" + encodeURIComponent(url) + "&format=JSON&js=false&_apikey=81b476c53b0a4e76a622ed40252d06dc711f298df1876619a65325e9aa6326f8004f8283eb5bc7e13850b1ccb7acdf773d94abd26fc9d7d6fc87bbe89ab2e51ba75720cbc37dfacfe237a8537c66f2b1";
+    url = "https://api.import.io/store/connector/_magic?url=" 
+        + encodeURIComponent(url) 
+        + "&format=JSON&js=false&_apikey=81b476c53b0a4e76a622ed40252d06dc711f298df1876619a65325e9aa6326f8004f8283eb5bc7e13850b1ccb7acdf773d94abd26fc9d7d6fc87bbe89ab2e51ba75720cbc37dfacfe237a8537c66f2b1";
     console.log(url);
 
     http.get(url, function (response) {
@@ -93,10 +95,9 @@ function chart(data){
   console.log(" >> DONE");
 }
 
-// Retrieve new posts as they are added to our database
 database.once("value", function(snapshot) {
   iphones = snapshot.val();
-  console.log(JSON.stringify(iphones, null, 2));
+  console.log(iphones);
 
   crawler(process.argv[2]).then(map).done(chart);
 });
