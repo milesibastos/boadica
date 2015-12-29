@@ -66,6 +66,7 @@ function map(data) {
         link: item.modelo_link,
         date: new Date().toJSON()
       };
+      console.log(">> " + model + ": " + description);
       console.log(iphones[model][description]);
     }
   });
