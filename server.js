@@ -10,7 +10,8 @@ var _ = require('underscore'),
     Firebase = require("firebase");
 
 var iphones = {};
-var database = new Firebase("https://" + process.env.FIREBASEIO + "/boadica/iphones");
+var firebaseio = process.env.FIREBASEIO || process.argv[3];
+var database = new Firebase("https://" + firebaseio + "/boadica/iphones");
 
 function crawler(url) {
 
@@ -90,14 +91,9 @@ function chart(data){
       }
     }
   }
-  var ref = new Firebase("https://" + process.env.FIREBASEIO + "/boadica/data/" + new Date().toISOString().slice(0, 10));
+  var ref = new Firebase("https://" + firebaseio + "/boadica/data/" + new Date().toISOString().slice(0, 10));
   ref.set(result);
   console.log(" >> DONE");
 }
 
-database.once("value", function(snapshot) {
-  iphones = snapshot.val();
-  console.log(iphones);
-
-  crawler(process.argv[2]).then(map).done(chart);
-});
+crawler(process.argv[2]).then(map).done(chart);
